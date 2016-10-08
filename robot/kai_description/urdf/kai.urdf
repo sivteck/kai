@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<robot name="kai">
+  <link name="base">
+    <visual>
+      <geometry>
+        <box size="0.6 0.2 0.1"/>
+      </geometry>
+      <origin xyz="0 0 0.05"/>
+    </visual>
+  </link>
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.6" radius="0.2"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 0.8 1"/>
+      </material>
+    </visual>
+ </link>
+ 
+  <link name="pole">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/>
+      </geometry>
+      <material name="green">
+        <color rgba="0 0.8 0 1"/>
+      </material>
+ 
+    </visual>
+  </link>
+
+  <link name="arm">
+    <visual>
+      <geometry>
+        <cylinder length="0.8" radius="0.1"/>
+      </geometry>
+      <origin xyz="0 0 0.4"/>
+    </visual>
+  </link>
+
+  <joint name="base_rotate" type="fixed">
+    <parent link="base"/>
+    <child link="base_link"/>
+    <axis xyz="0 0 1" />
+   <origin xyz="0 0 0.4"/>
+ </joint>
+
+ <joint name="base_to_pole" type="continuous">
+    <parent link="base_link"/>
+    <child link="pole"/>
+    <axis xyz="0 0 1" />
+   <origin xyz="0 0 0.55"/>
+ </joint>
+
+  <joint name="pole_to_arm" type="revolute">
+    <axis xyz="0 1 0" />
+    <limit effort="1000" lower="-2.5" upper="2.5" velocity="0.6" />
+    <parent link="pole" />
+    <child link="arm" />
+    <origin xyz="0 0 0.25"/>
+  </joint>
+
+
+</robot>

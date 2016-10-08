@@ -40,7 +40,15 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-
+  <build_depend>roslaunch</build_depend>
+  <run_depend>controller_manager</run_depend>
+  <run_depend>diff_drive_controller</run_depend>
+  <run_depend>effort_controllers</run_depend>
+  <run_depend>joint_state_controller</run_depend>
+  <run_depend>robot_publisher</run_depend>
+  <run_depend>rqt_gui</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>xacro</run_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
