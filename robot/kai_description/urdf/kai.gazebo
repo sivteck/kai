@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot name="kai" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!--gazebo settings-->
+  <gazebo reference="base_platform_link">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="base_cylinder_link">
+    <material>Gazebo/Green</material>
+  </gazebo>
+
+  <gazebo reference="pole_link">
+    <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="arm_link">
+    <material>Gazebo/Orange</material>
+  </gazebo>
+
+</robot>
+
+
