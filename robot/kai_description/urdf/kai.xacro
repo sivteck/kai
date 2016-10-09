@@ -19,6 +19,12 @@
   <xacro:property name="arm_mass" value="10.597" />
 
   <xacro:include filename="$(find kai_description)/urdf/kai.gazebo" />
+  <xacro:include filename="$(find kai_description)/urdf/macros.xacro" />
   <xacro:include filename="$(find kai_description)/urdf/materials.xacro" />
   <xacro:include filename="$(find kai_description)/urdf/geometry.xacro" />
+
+  <!--load ros_control plugin-->
+  <gazebo>
+    <plugin name="control" filename="libgazebo_ros_control.so"/>
+  </gazebo>
 </robot>

@@ -1,0 +1,5 @@
+kai_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - base_pole_joint
+    - pole_arm_joint

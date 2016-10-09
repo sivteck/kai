@@ -1,0 +1,12 @@
+<launch>
+
+  <arg name="model" default="$(find kai_description)/urdf/kai.xacro" />
+
+  <include file="$(find kai_gazebo)/launch/kai.launch" />
+
+  <rosparam command="load" file="$(find kai_control)/config/control.yaml" />
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="kai_controller" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args=" -d $(find kai_description)/kai.rviz" required="true" />
+</launch>

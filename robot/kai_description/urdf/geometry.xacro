@@ -21,6 +21,7 @@
       depth="${base_platform_depth}" height="${base_platform_height}" />
   </link>
 
+  <!--JOINT Base_fixed-->
   <joint name="base_fixed_joint" type="fixed">
     <parent link="base_platform_link" />
     <child link="base_cylinder_link" />
@@ -28,7 +29,7 @@
     <origin xyz="0 0 ${base_platform_height}" rpy="0 0 0"/>
   </joint>
 
-
+  <!--Base Cylinder-->
   <link name="base_cylinder_link">
     <collision>
       <origin xyz="0 0 ${base_cylinder_length/2}" rpy="0 0 0" />
@@ -49,6 +50,7 @@
 
   </link>
 
+  <!--JOINT Base_pole-->
   <joint name="base_pole_joint" type="continuous">
     <parent link="base_cylinder_link" />
     <child link="pole_link" />
@@ -56,6 +58,7 @@
     <axis xyz="0 0 1" />
   </joint>
  
+ <!--Pole-->
  <link name="pole_link">
     <collision>
       <origin xyz="0 0 ${pole_length/2}" rpy="0 0 0" />
@@ -72,10 +75,11 @@
       <material name="red" />
     </visual>
 
-    <xacro:cylinder_center_inertial mass="${pole_mass}" radius="${pole_radius}" length="${pole_length}" />
+    <xacro:cylinder_center_inertia mass="${pole_mass}" radius="${pole_radius}" length="${pole_length}" />
   </link>
 
 
+  <!--JOINT Pole_arm-->
   <joint name="pole_arm_joint" type="revolute">
     <parent link="pole_link"/>
     <child link="arm_link" />
@@ -84,6 +88,7 @@
     <limit effort="1000" lower="-2.5" upper="2.5" velocity="0.6" />
   </joint>
 
+  <!--Arm-->
   <link name="arm_link">
      <collision>
        <origin xyz="0 0 ${arm_length/2}" rpy="0 0 0" />
@@ -100,7 +105,30 @@
       <material name="orange" />
     </visual>
 
-    <xacro:cylinder_end_inertial mass="${arm_mass}" radius="${arm_radius}" length="${arm_length}" />
+    <xacro:cylinder_end_inertia mass="${arm_mass}" radius="${arm_radius}" length="${arm_length}" />
   </link> 
+
+  <!--Transmissions-->
+  <transmission name="tran0">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="base_pole_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor0">
+      <hardwareInterface>PositionJointInterfce</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pole_arm_joint">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>PositionJointInterfce</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
 
 </robot>
