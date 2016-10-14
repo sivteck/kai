@@ -8,5 +8,5 @@
 
   <node name="controller_spawner" pkg="controller_manager" type="spawner" args="kai_controller" />
 
-  <node name="rviz" pkg="rviz" type="rviz" args=" -d $(find kai_description)/kai.rviz" required="true" />
+  <!--node name="rviz" pkg="rviz" type="rviz" args=" -d $(find kai_description)/kai.rviz" required="true" /-->
 </launch>
