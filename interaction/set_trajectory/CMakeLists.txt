@@ -140,9 +140,9 @@ include_directories(
 # add_dependencies(set_trajectory_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(set_trajectory_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(set_trajectory_node
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
